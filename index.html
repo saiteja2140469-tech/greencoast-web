@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Coast Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f9fc;
+        }
+        
+        header {
+            background: linear-gradient(to right, #1a5f7a, #159895);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #57C5B6;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #57C5B6;
+        }
+        
+        .login-btn {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .login-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1526&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #57C5B6;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #159895;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .features {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a5f7a;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #57C5B6;
+            border-radius: 2px;
+        }
+        
+        .feature-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a5f7a;
+        }
+        
+        .card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-showcase {
+            background: linear-gradient(to right, #1a5f7a, #159895);
+            padding: 5rem 2rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .tech-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tech-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tech-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #57C5B6;
+        }
+        
+        .tech-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stats {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat {
+            width: 200px;
+        }
+        
+        .stat i {
+            font-size: 2.5rem;
+            color: #57C5B6;
+            margin-bottom: 1rem;
+        }
+        
+        .stat h3 {
+            font-size: 2.5rem;
+            color: #1a5f7a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat p {
+            color: #666;
+        }
+        
+        .cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        footer {
+            background: #1a5f7a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #57C5B6;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #57C5B6;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: #57C5B6;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+            animation: slideIn 0.3s;
+            position: relative;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a5f7a;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-options label {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .form-options input {
+            margin-right: 5px;
+        }
+        
+        .form-options a {
+            color: #1a5f7a;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        
+        .form-options a:hover {
+            text-decoration: underline;
+        }
+        
+        .modal-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #57C5B6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .modal-btn:hover {
+            background: #159895;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+        }
+        
+        .register-link a {
+            color: #1a5f7a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links li:not(:last-child) {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .modal-content {
+                width: 90%;
+                margin: 20% auto;
+            }
+        }
+        
+        /* User Dashboard */
+        .dashboard {
+            display: none;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-card h3 {
+            color: #1a5f7a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dashboard-card h3 i {
+            margin-right: 10px;
+            color: #57C5B6;
+        }
+        
+        .dashboard-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .user-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .user-stat {
+            text-align: center;
+            padding: 1rem;
+            background: #f5f9fc;
+            border-radius: 10px;
+        }
+        
+        .user-stat h4 {
+            font-size: 1.5rem;
+            color: #1a5f7a;
+        }
+        
+        .user-stat p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>Green Coast</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Impact</a></li>
+                <li><a href="#">Contact</a></li>
+                <li id="login-item"><a href="#" class="login-btn" id="login-btn">Login</a></li>
+                <li id="user-info" class="user-info" style="display: none;">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="User" id="user-avatar">
+                    <span id="user-name">John Doe</span>
+                    <a href="#" id="logout-btn" style="margin-left: 10px; color: #ff6b6b;"><i class="fas fa-sign-out-alt"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <section class="hero">
+            <h1>Smart Coast Management Solutions</h1>
+            <p>Leveraging nanotechnology and AI for sustainable coastal waste management and energy conversion</p>
+            <a href="#" class="btn">Explore Solutions</a>
+        </section>
+
+        <section class="features">
+            <h2 class="section-title">Our Innovative Solutions</h2>
+            <div class="feature-cards">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1587334274527-ba54f0b5a357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Smart Bins">
+                    </div>
+                    <div class="card-content">
+                        <h3>Smart Bins</h3>
+                        <p>AI-powered waste segregation with sensors that automatically sort waste into categories like wet, dry, and recyclable materials.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Coast-to-Energy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Coast-to-Energy</h3>
+                        <p>Convert coastal waste into renewable energy through advanced pyrolysis and waste-to-energy conversion systems.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Nano Technology">
+                    </div>
+                    <div class="card-content">
+                        <h3>Green Nanotechnology</h3>
+                        <p>Using nanomaterials for water purification, microplastic detection, and enhancing waste management processes.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-showcase">
+            <h2 class="section-title">Advanced Technologies</h2>
+            <div class="tech-cards">
+                <div class="tech-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Sensor Technology</h3>
+                    <p>Advanced sensors for real-time monitoring of waste levels and composition.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                    <p>AI algorithms that improve waste sorting accuracy over time.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Smart Recycling</h3>
+                    <p>Automated systems that maximize recycling rates and reduce contamination.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="stats-container">
+                <div class="stat">
+                    <i class="fas fa-weight-hanging"></i>
+                    <h3>250+</h3>
+                    <p>Tons of waste processed daily</p>
+                </div>
+                
+                <div class="stat">
+                    <i class="fas fa-bolt"></i>
+                    <h3>50MW</h3>
+                    <p>Clean energy generated</p>
+                </div>
+                
+                <div class="stat">
+                    <i class="fas fa-recycle"></i>
+                    <h3>78%</h3>
+                    <p>Recycling rate achieved</p>
+                </div>
+                
+                <div class="stat">
+                    <i class="fas fa-shore"></i>
+                    <h3>120km</h3>
+                    <p>Coastline protected</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>Join Us in Creating Sustainable Coastlines</h2>
+            <p>Together we can protect our coasts for future generations</p>
+            <a href="#" class="btn">Get Involved</a>
+        </section>
+    </div>
+
+    <!-- User Dashboard (Hidden by default) -->
+    <div id="dashboard" class="dashboard">
+        <div class="dashboard-header">
+            <h2>Welcome back, <span id="dashboard-user-name">User</span>!</h2>
+            <p>Here's your coastal management dashboard</p>
+        </div>
+        
+        <div class="dashboard-cards">
+            <div class="dashboard-card">
+                <h3><i class="fas fa-trash-alt"></i> Waste Management</h3>
+                <p>Monitor and manage smart bin operations along the coastline.</p>
+                <div class="user-stats">
+                    <div class="user-stat">
+                        <h4>12</h4>
+                        <p>Active Bins</p>
+                    </div>
+                    <div class="user-stat">
+                        <h4>78%</h4>
+                        <p>Efficiency</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <h3><i class="fas fa-bolt"></i> Energy Production</h3>
+                <p>Track energy generation from waste-to-energy systems.</p>
+                <div class="user-stats">
+                    <div class="user-stat">
+                        <h4>5.2MW</h4>
+                        <p>Today</p>
+                    </div>
+                    <div class="user-stat">
+                        <h4>1.4GW</h4>
+                        <p>This Month</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <h3><i class="fas fa-recycle"></i> Recycling Stats</h3>
+                <p>View recycling performance and trends.</p>
+                <div class="user-stats">
+                    <div class="user-stat">
+                        <h4>82%</h4>
+                        <p>Recycling Rate</p>
+                    </div>
+                    <div class="user-stat">
+                        <h4>+12%</h4>
+                        <p>Improvement</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <h3><i class="fas fa-shield-alt"></i> Coastal Protection</h3>
+                <p>Monitor protected areas and environmental impact.</p>
+                <div class="user-stats">
+                    <div class="user-stat">
+                        <h4>45km</h4>
+                        <p>Protected Coast</p>
+                    </div>
+                    <div class="user-stat">
+                        <h4>92%</h4>
+                        <p>Cleanliness</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Green Coast</h3>
+                <p>Providing innovative solutions for sustainable coast management through technology and community engagement.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Impact</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Coastal Road, Ocean City</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@greencoast.com</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Green Coast Management. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center; color: #1a5f7a; margin-bottom: 1.5rem;">Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="modal-btn">Login</button>
+            </form>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" id="register-link">Register</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loginBtn = document.getElementById('login-btn');
+        const loginModal = document.getElementById('login-modal');
+        const closeModal = document.querySelector('.close');
+        const loginForm = document.getElementById('login-form');
+        const loginItem = document.getElementById('login-item');
+        const userInfo = document.getElementById('user-info');
+        const userName = document.getElementById('user-name');
+        const dashboardUserName = document.getElementById('dashboard-user-name');
+        const logoutBtn = document.getElementById('logout-btn');
+        const mainContent = document.getElementById('main-content');
+        const dashboard = document.getElementById('dashboard');
+        
+        // Show login modal
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginModal.style.display = 'block';
+        });
+        
+        // Close login modal
+        closeModal.addEventListener('click', function() {
+            loginModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+        
+        // Handle login form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (email && password) {
+                // In a real application, you would verify credentials with a server
+                // For this demo, we'll simulate a successful login
+                simulateLogin(email);
+            }
+        });
+        
+        // Simulate login process
+        function simulateLogin(email) {
+            // Close the modal
+            loginModal.style.display = 'none';
+            
+            // Update UI for logged in state
+            loginItem.style.display = 'none';
+            userInfo.style.display = 'flex';
+            userName.textContent = email.split('@')[0]; // Use part of email as username
+            dashboardUserName.textContent = email.split('@')[0];
+            
+            // Show dashboard and hide main content
+            mainContent.style.display = 'none';
+            dashboard.style.display = 'block';
+            
+            // Store login state in localStorage
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+        }
+        
+        // Handle logout
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Update UI for logged out state
+            loginItem.style.display = 'list-item';
+            userInfo.style.display = 'none';
+            
+            // Show main content and hide dashboard
+            mainContent.style.display = 'block';
+            dashboard.style.display = 'none';
+            
+            // Clear login state from localStorage
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+        });
+        
+        // Check if user is already logged in
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userEmail = localStorage.getItem('userEmail');
+            
+            if (isLoggedIn === 'true' && userEmail) {
+                loginItem.style.display = 'none';
+                userInfo.style.display = 'flex';
+                userName.textContent = userEmail.split('@')[0];
+                dashboardUserName.textContent = userEmail.split('@')[0];
+                mainContent.style.display = 'none';
+                dashboard.style.display = 'block';
+            }
+        }
+        
+        // Check login status when page loads
+        window.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+</body>
+</html>
